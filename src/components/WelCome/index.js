@@ -1,24 +1,25 @@
-import React from 'react';
+import React from 'react'
 import {
 	connect
-} from 'react-redux';
+} from 'react-redux'
 
+import './index.less'
 
 function mapStateToProps(state) {
 	return {
 
-	};
+	}
 }
 
 class WelCome extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="welcome">
 				欢迎使用
 			</div>
 
-		);
+		)
 	}
 }
 

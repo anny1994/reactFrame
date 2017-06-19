@@ -4,7 +4,7 @@ import {
 	Redirect,
 	Route
 } from 'react-router-dom'
-import WelCome from '../containers/WelComeContainer'
+import WelCome from '../components/WelCome'
 import Exp from '../containers/ExpContainer'
 /*import NotFound from '../components/NotFound'*/
 const routes = (

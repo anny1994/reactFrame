@@ -4,10 +4,9 @@ import {
   Link
 } from 'react-router-dom'
 import {
-  Menu,
-  Icon
+  Menu
 } from 'antd';
-// let i = 1;
+let i = 1;
 const SubMenu = Menu.SubMenu;
 
 class Sider extends React.Component {
@@ -57,11 +56,12 @@ class Sider extends React.Component {
         onClick={this.handleClick}
       >
        {this.props.menu.map((item, index) => (
-          <SubMenu key={'sub'+(index+1)} title={<span><Icon type="mail" /><span>{item.fistMenu.title}</span></span>}>
+          <SubMenu key={'sub'+(index+1)} title={<span><span>{item.fistMenu.title}</span></span>}>
               {
                 item.secondMenu.map((v, k) => {
+                  i++
                   return (
-                  <Menu.Item key={k}><Link to={v.path}>{v.title}</Link></Menu.Item>
+                  <Menu.Item key={i}><Link to={v.path}>{v.title}</Link></Menu.Item>
                 )
                 })
               }

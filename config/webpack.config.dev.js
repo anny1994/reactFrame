@@ -231,7 +231,7 @@ module.exports = {
             loader: require.resolve('less-loader'),
             options: {
               modifyVars: {
-                "@font-size-base": '14px'
+                "@font-size-base": '14px',
               },
             },
           },

@@ -11,16 +11,19 @@ import {
 import ComSider from '../../components/Sider'
 import './index.less'
 import * as navActionsCreators from '../../actions'
+import route from '../../routes/route'
+
+
 import {
 	Layout
 } from 'antd';
-
-import route from '../../routes/route'
 const {
 	Header,
-	Sider,
-	Content
+	Content,
+	Sider
 } = Layout;
+
+
 const mapStateToProps = state => {
 	let {
 		nav
@@ -48,7 +51,7 @@ export class AppContainer extends React.Component {
 				<Layout style={{'height':'100%'}}>
 			      <Header style={{'color':'#fff'}}>实验室信息管理系统</Header>
 			      <Layout >
-			        <Sider><ComSider menu={this.props.nav}/></Sider>
+			        <Sider><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
 			        <Content>
 						{route}
 			        </Content>

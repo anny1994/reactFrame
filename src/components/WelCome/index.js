@@ -16,7 +16,7 @@ class WelCome extends React.Component {
 	render() {
 		return (
 			<div className="welcome">
-				欢迎使用
+				<p>欢迎使用</p>
 			</div>
 
 		)

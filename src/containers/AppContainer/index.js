@@ -6,7 +6,8 @@ import {
 	bindActionCreators
 } from 'redux'
 import {
-	BrowserRouter as Router
+	BrowserRouter as Router,
+	Link
 } from 'react-router-dom'
 import ComSider from '../../components/Sider'
 import './index.less'
@@ -15,7 +16,10 @@ import route from '../../routes/route'
 
 
 import {
-	Layout
+	Layout,
+	Icon,
+	Menu,
+	Dropdown
 } from 'antd';
 const {
 	Header,
@@ -26,13 +30,24 @@ const {
 
 const mapStateToProps = state => {
 	let {
-		nav
+		nav,
+		userInfo
 	} = state
 	return {
-		nav: nav
+		nav: nav,
+		userInfo: userInfo
 	}
 }
-
+const menu = (
+	<Menu>
+    <Menu.Item>
+      	<Link to="userinfo">个人中心</Link>
+    </Menu.Item>
+    <Menu.Item>
+    	<Link to="logout">退出</Link>
+    </Menu.Item>
+  </Menu>
+)
 
 export class AppContainer extends React.Component {
 
@@ -45,11 +60,40 @@ export class AppContainer extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.userInfo)
 		return (
 			<Router>
 			<div className="app-ct">
 				<Layout style={{'height':'100%'}}>
-			      <Header style={{'color':'#fff'}}>实验室信息管理系统</Header>
+			      <Header className="cym-nav-header">
+			      	<span className="ems-title">实验室信息管理系统</span>
+			      	<Dropdown overlay={menu}>
+					    <div className="ant-dropdown-link">
+					      <span className="ems-userinfo">
+						    	<span>
+					      			{this.props.userInfo.name}
+					      		</span>
+					      		<span>
+					      			到期时间：{this.props.userInfo.dqsj}
+					      		</span>
+					      		 <Icon className="cym-user-icon" type="user" />
+						    </span>
+					    </div>
+					</Dropdown>
+			      	{/*<Dropdown overlay={menu}>
+					    <a className="ant-dropdown-link">
+						    <div className="ems-userinfo">
+						    	<div>
+					      			{this.props.userInfo.name}
+					      		</div>
+					      		<div>
+					      			{this.props.userInfo.dqsj}
+					      		</div>
+						    </div>
+						</a><Icon type="down" />
+					</Dropdown>*/}
+
+			      </Header>
 			      <Layout >
 			        <Sider><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
 			        <Content>

@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import {
 	BrowserRouter as Router
 } from 'react-router-dom'
@@ -16,8 +16,12 @@ import {
 import thunk from 'redux-thunk'
 import reducer from './reducers'
 
-import registerServiceWorker from './registerServiceWorker';
-import './assets/less/base.less';
+import {
+	initEnv
+} from './actions'
+
+import registerServiceWorker from './registerServiceWorker'
+import './assets/less/base.less'
 import App from './containers/AppContainer'
 const middleware = [thunk]
 if (process.env.NODE_ENV !== 'production') {
@@ -32,5 +36,6 @@ ReactDOM.render(
 	<Router>
 		<App/>
 	</Router>
-   </Provider>, document.getElementById('root'));
-registerServiceWorker();
+   </Provider>, document.getElementById('root'))
+registerServiceWorker()
+store.dispatch(initEnv())

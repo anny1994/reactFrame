@@ -9,18 +9,30 @@ import * as expActionsCreators from '../../actions/exp'
 import {
 	paginationConfig
 } from '../../constants/constant'
+
 import {
 	Layout,
 	Breadcrumb,
 	Table,
-	Icon,
-	Menu,
-	Dropdown,
+	Form,
+	Row,
+	Col,
+	Input,
 	Button
 } from 'antd'
+
 const {
 	Content
 } = Layout
+const FormItem = Form.Item;
+const formItemLayout = {
+	labelCol: {
+		span: 5
+	},
+	wrapperCol: {
+		span: 19
+	},
+};
 
 function mapStateToProps(state) {
 	let {
@@ -31,20 +43,6 @@ function mapStateToProps(state) {
 		total: exp.totalRecords
 	}
 }
-const menu = (
-	<Menu>
-    <Menu.Item>
-      	<Button type="primary">启动实验</Button>
-    </Menu.Item>
-    <Menu.Item>
-    	<Button >编辑实验</Button>
-
-    </Menu.Item>
-    <Menu.Item>
-      	<Button type="danger">删除实验</Button>
-    </Menu.Item>
-  </Menu>
-)
 const columns = [{
 	title: '实验编号',
 	dataIndex: 'sybh',
@@ -76,13 +74,15 @@ const columns = [{
 }, {
 	title: '操作',
 	key: 'action',
-	render: (text, record) => (
-		<Dropdown overlay={menu}>
-		    <a className="ant-dropdown-link">
-		      操作 <Icon type="down" />
-		    </a>
-		</Dropdown>
-	),
+	render: (text) => {
+		if (text.xszt === 3) {
+			return <a href={'/tjsyzb/'+text.id}>提交实验准备</a>
+		}
+		if (text.xszt === 2) {
+			return <a href={'/tjsyjl/'+text.id}>提交实验记录</a>
+		}
+
+	},
 }]
 
 class Exp extends React.Component {
@@ -101,9 +101,27 @@ class Exp extends React.Component {
 			<Layout style={{minHeight:'100%'}}>
 	          <Content style={{ margin: '0 16px' }}>
 	            <Breadcrumb style={{ margin: '12px 0' }}>
-	              <Breadcrumb.Item>实验列表</Breadcrumb.Item>
+	              <Breadcrumb.Item>正在进行的实验</Breadcrumb.Item>
 	            </Breadcrumb>
 	            <div style={{ padding: 24, background: '#fff', minHeight: '100%' }}>
+	            	<Form
+				        className="ant-advanced-search-form"
+				        onSubmit={this.handleSearch}
+				      >
+				        <Row gutter={40}>
+							<Col span={6}>
+								<FormItem {...formItemLayout} label={'实验编号'}>
+					              <Input placeholder="实验编号" />
+					          </FormItem>
+				          	</Col>
+				          	<Col>
+				            <Button type="primary" htmlType="submit">查询</Button>
+				            <Button style={{ marginLeft: 8 }} htmlType="reset">
+				              清除
+				            </Button>
+				          </Col>
+				        </Row>
+				      </Form>
 	              <Table columns={columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
 	            </div>
 	          </Content>

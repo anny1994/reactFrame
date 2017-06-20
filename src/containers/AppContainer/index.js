@@ -80,22 +80,9 @@ export class AppContainer extends React.Component {
 						    </span>
 					    </div>
 					</Dropdown>
-			      	{/*<Dropdown overlay={menu}>
-					    <a className="ant-dropdown-link">
-						    <div className="ems-userinfo">
-						    	<div>
-					      			{this.props.userInfo.name}
-					      		</div>
-					      		<div>
-					      			{this.props.userInfo.dqsj}
-					      		</div>
-						    </div>
-						</a><Icon type="down" />
-					</Dropdown>*/}
-
 			      </Header>
 			      <Layout >
-			        <Sider><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
+			        <Sider  width='240' ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
 			        <Content>
 						{route}
 			        </Content>

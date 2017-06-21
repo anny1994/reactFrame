@@ -1,6 +1,6 @@
 import {
 	GET_NAV_LIST
-} from '../constants/ActionTypes'
+} from 'constants/ActionTypes'
 
 const nav = (state = [], action) => {
 	switch (action.type) {

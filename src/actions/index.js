@@ -1,7 +1,7 @@
 import {
 	GET_NAV_LIST,
 	SET_USER_INFO
-} from '../constants/ActionTypes'
+} from 'constants/ActionTypes'
 import '../api/nav'
 import axios from 'axios'
 /*

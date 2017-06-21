@@ -6,7 +6,7 @@
 
 import {
 	GET_STUDENT_ING_EXP
-} from '../constants/ActionTypes'
+} from 'constants/ActionTypes'
 
 const exp = (state = [], action) => {
 	switch (action.type) {

@@ -9,9 +9,9 @@ import {
 	BrowserRouter as Router,
 	Link
 } from 'react-router-dom'
-import ComSider from '../../components/Sider'
+import ComSider from 'components/Sider'
 import './index.less'
-import * as navActionsCreators from '../../actions'
+import * as navActionsCreators from 'actions'
 import route from '../../routes/route'
 
 
@@ -60,7 +60,6 @@ export class AppContainer extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.userInfo)
 		return (
 			<Router>
 			<div className="app-ct">

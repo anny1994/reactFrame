@@ -7,10 +7,10 @@ import {
   Breadcrumb
 } from 'antd'
 
-import ExpForm from '../../components/ExpForm'
+import ExpForm from 'components/ExpForm'
 import {
   formfield
-} from '../../constants/constant'
+} from 'constants/constant'
 const {
   Content
 } = Layout;
@@ -22,10 +22,6 @@ function mapStateToProps(state) {
 }
 
 class StuIngExp extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Layout style={{minHeight:'100%'}}>

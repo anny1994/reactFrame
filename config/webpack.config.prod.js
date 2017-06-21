@@ -88,6 +88,11 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      'actions': `${paths.appSrc}/actions/`,
+      'components': `${paths.appSrc}/components/`,
+      'containers': `${paths.appSrc}/containers/`,
+      'constants': `${paths.appSrc}/constants/`,
+      'assets': `${paths.appSrc}/assets/`,
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -96,6 +101,7 @@ module.exports = {
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc),
+      new webpack.BannerPlugin("Building Time:" + new Date().toString())
     ],
   },
   module: {
@@ -251,7 +257,7 @@ module.exports = {
                 loader: require.resolve('less-loader'),
                 options: {
                   modifyVars: {
-                    "@primary-color": "#1DA57A"
+                    "@font-size-base": '14px',
                   },
                 },
               }, ],

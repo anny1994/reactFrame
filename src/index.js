@@ -18,11 +18,10 @@ import reducer from './reducers'
 
 import {
 	initEnv
-} from './actions'
-
+} from 'actions'
 import registerServiceWorker from './registerServiceWorker'
-import './assets/less/base.less'
-import App from './containers/AppContainer'
+import 'assets/less/base.less'
+import App from 'containers/AppContainer'
 const middleware = [thunk]
 if (process.env.NODE_ENV !== 'production') {
 	middleware.push(createLogger())

@@ -19,4 +19,6 @@ function Logger() {
 	});
 	return logger;
 }
-export const logger = Logger()
+const Log = Logger()
+
+module.exports = Log

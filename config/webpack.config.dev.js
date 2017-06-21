@@ -90,6 +90,11 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      'actions': `${paths.appSrc}/actions/`,
+      'components': `${paths.appSrc}/components/`,
+      'containers': `${paths.appSrc}/containers/`,
+      'constants': `${paths.appSrc}/constants/`,
+      'assets': `${paths.appSrc}/assets/`
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -285,5 +290,5 @@ module.exports = {
   // cumbersome.
   performance: {
     hints: false,
-  },
+  }
 };

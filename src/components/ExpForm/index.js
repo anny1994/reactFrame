@@ -53,7 +53,7 @@ class ExpForm extends React.Component {
 		            	{getFieldDecorator(formfield[i])(
 		              	<Input placeholder={formfield[i]} disabled/>
 		            	)}
-		          	</FormItem>		
+		          	</FormItem>
        			</Col>
 			);
 		}
@@ -69,7 +69,7 @@ class ExpForm extends React.Component {
 		        <Row>
 		          <Col span={24} style={{ textAlign: 'right' }}>
 		            <Button type="primary" htmlType="submit">提交</Button>
-		            <Button style={{ marginLeft: 8 }} htmlType="reset" onClick={this.handleReset}>
+					<Button style={{ marginLeft: 8 }}  onClick={this.handleReset}>
 		              重置
 		            </Button>
 		          </Col>

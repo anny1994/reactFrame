@@ -4,11 +4,11 @@ import {
 	Redirect,
 	Route
 } from 'react-router-dom'
-import WelCome from '../components/WelCome'
-import Exp from '../containers/ExpContainer'
+import WelCome from 'components/WelCome'
+import Exp from 'containers/ExpContainer'
 
 
-import StuIngExp from '../containers/ExpContainer/stuIngExp'
+import StuIngExp from 'containers/ExpContainer/stuIngExp'
 /*import NotFound from '../components/NotFound'*/
 const routes = (
 	<Switch>

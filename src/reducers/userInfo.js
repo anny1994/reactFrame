@@ -1,6 +1,6 @@
 import {
 	SET_USER_INFO
-} from '../constants/ActionTypes'
+} from 'constants/ActionTypes'
 
 const userInfo = (state = {}, action) => {
 	switch (action.type) {

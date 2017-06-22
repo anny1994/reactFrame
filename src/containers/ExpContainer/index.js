@@ -36,54 +36,13 @@ const formItemLayout = {
 
 function mapStateToProps(state) {
 	let {
-		exp
-	} = state
+		expList
+	} = state.expreducer
 	return {
-		list: exp.list,
-		total: exp.totalRecords
+		list: expList.list,
+		total: expList.totalRecords
 	}
 }
-const columns = [{
-	title: '实验编号',
-	dataIndex: 'sybh',
-	key: 'sybh'
-}, {
-	title: '实验名称',
-	dataIndex: 'name',
-	key: 'name',
-}, {
-	title: '实验日期',
-	dataIndex: 'syrq',
-	key: 'syrq',
-}, {
-	title: '发起人',
-	dataIndex: 'lsname',
-	key: 'lsname',
-}, {
-	title: '状态',
-	dataIndex: 'xszt',
-	key: 'xszt',
-	render: text => {
-		if (text === 3) {
-			return '实验进行中'
-		}
-		if (text === 2) {
-			return '实验准备中'
-		}
-	},
-}, {
-	title: '操作',
-	key: 'action',
-	render: (text) => {
-		if (text.xszt === 3) {
-			return <a href={'/tjsyzb/'+text.id}>提交实验准备</a>
-		}
-		if (text.xszt === 2) {
-			return <a href={'/tjsyjl/'+text.id}>提交实验记录</a>
-		}
-
-	},
-}]
 class NormalSearchForm extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
@@ -137,6 +96,47 @@ class Exp extends React.Component {
 	constructor(props) {
 		super(props)
 		this.expActionsCreators = bindActionCreators(expActionsCreators, this.props.dispatch)
+		this.columns = [{
+			title: '实验编号',
+			dataIndex: 'sybh',
+			key: 'sybh'
+		}, {
+			title: '实验名称',
+			dataIndex: 'name',
+			key: 'name',
+		}, {
+			title: '实验日期',
+			dataIndex: 'syrq',
+			key: 'syrq',
+		}, {
+			title: '发起人',
+			dataIndex: 'lsname',
+			key: 'lsname',
+		}, {
+			title: '状态',
+			dataIndex: 'xszt',
+			key: 'xszt',
+			render: text => {
+				if (text === 3) {
+					return '实验进行中'
+				}
+				if (text === 2) {
+					return '实验准备中'
+				}
+			},
+		}, {
+			title: '操作',
+			key: 'action',
+			render: (text) => {
+				if (text.xszt === 3) {
+					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id)}>提交实验准备</Button>
+				}
+				if (text.xszt === 2) {
+					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id)}>提交实验记录</Button>
+				}
+
+			},
+		}]
 	}
 	componentWillMount() {
 		this.expActionsCreators.getStuIngExp()
@@ -144,6 +144,20 @@ class Exp extends React.Component {
 	}
 	handleSearch = (data) => {
 		this.expActionsCreators.searchExp(data)
+	}
+	goExpInfo = (params) => {
+		let {
+			history
+		} = this.props
+		expActionsCreators.getExpById(params, function(calldata) {
+			if (calldata.status) {
+				history.push(`/tjsyzb/${params}`, {
+					expInfo: calldata
+				})
+			}
+		})
+
+
 	}
 	onChange = (page, size) => {
 		console.log(page, size)
@@ -165,7 +179,7 @@ class Exp extends React.Component {
 	            </Breadcrumb>
 	            <div style={{ padding: 24, background: '#fff'}}>
 				      <SearchForm searchfunc={this.expActionsCreators.searchExp.bind(this)}></SearchForm>
-	              <Table columns={columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
+	              <Table columns={this.columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
 	            </div>
 	          </Content>
 	        </Layout>

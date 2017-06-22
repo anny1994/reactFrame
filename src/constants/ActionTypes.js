@@ -5,3 +5,6 @@ export const SET_USER_INFO = 'SET_USER_INFO';
 
 //获取老师正在进行的实验
 export const GET_STUDENT_ING_EXP = 'GET_STUDENT_ING_EXP';
+
+//获取实验信息
+export const GET_EXP_DETAIL_BY_ID = 'GET_EXP_DETAIL_BY_ID';

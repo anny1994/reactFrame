@@ -1,4 +1,8 @@
 import Mock from 'mockjs';
+
+/**
+ * 侧边栏菜单
+ */
 Mock.mock('/menuController.do?qx', {
 	"data": [{
 		"secondMenu": [{
@@ -47,6 +51,12 @@ Mock.mock('/menuController.do?qx', {
 	}],
 	"status": true
 })
+
+/**
+ * 进行中实验列表
+ * @param  {[type]} options) {	let        params [description]
+ * @return {[type]}          [description]
+ */
 Mock.mock('/xssyController.do?listjxz', 'get', function(options) {
 	let params = options.body
 	if (params) {
@@ -68,7 +78,7 @@ Mock.mock('/xssyController.do?listjxz', 'get', function(options) {
 						"lsname": "南农",
 						"xsname": "小胖"
 					}],
-					"totalRecords": 20
+					"totalRecords": 1
 				},
 				"status": true
 			}
@@ -165,6 +175,10 @@ Mock.mock('/xssyController.do?listjxz', 'get', function(options) {
 		"status": true
 	}
 })
+
+/**
+ * 个人信息
+ */
 Mock.mock('/userController.do?hqyhxx', {
 	"data": {
 		"qq": "",
@@ -179,4 +193,48 @@ Mock.mock('/userController.do?hqyhxx', {
 		"email": ""
 	},
 	"status": true
+})
+
+Mock.mock('/xssyController.do?syjlck', function(options) {
+	let params = options.body
+	if (params) {
+		return {
+			"fqsy": {
+				"name": "ddddddddddd",
+				"id": "402881e85c72ac2e015c72ad80690000",
+				"zt": 1,
+				"cjsj": "2017-06-04 18:36:32",
+				"rwbh": "",
+				"xmbh": "",
+				"fzr": "",
+				"yjlx": "",
+				"ktz": "",
+				"syrq": "2017-06-04 18:36:29",
+				"sybh": "20170604001",
+				"fqr": "南农",
+				"ktfx": "",
+				"pzr": "",
+				"synr": "dddddddddddddd",
+				"yqjg": "ddddddddddddddd",
+				"schoolid": "2c9330175c3a645a015c4e0d35820034"
+			},
+			"syzb": [{
+				"id": "402881e85c8d1a7e015c8d2b08550002",
+				"zt": 2,
+				"syid": "402881e85c72ac2e015c72ad80690000",
+				"xsid": "2c9330175c3a645a015c4e0eb4810036",
+				"czff": "ddd",
+				"py": "ddd",
+				"czsj": "2017-06-09 22:03:46",
+				"syxxjfx": "ddd"
+			}],
+			"syjl": [],
+			"status": true
+		}
+	} else {
+		return {
+			"status": false,
+			"msg": '缺少实验id'
+		}
+	}
 })

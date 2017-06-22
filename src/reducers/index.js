@@ -3,11 +3,11 @@ import {
 } from 'redux'
 import nav from './nav'
 import userInfo from './userInfo'
-import exp from './exp'
+import expreducer from './expreducer'
 const reducer = combineReducers({
 	nav,
 	userInfo,
-	exp
+	expreducer
 });
 
 export default reducer;

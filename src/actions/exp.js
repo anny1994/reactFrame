@@ -1,5 +1,9 @@
+/**
+ * 实验相关
+ */
 import {
-	GET_STUDENT_ING_EXP
+	GET_STUDENT_ING_EXP,
+	GET_EXP_DETAIL_BY_ID
 } from 'constants/ActionTypes'
 import '../api/nav'
 import axios from 'axios'
@@ -35,9 +39,37 @@ export function searchExp(data) {
 		})
 	}
 }
+
+/**
+ * 查询实验
+ * @return {[type]} [description]
+ */
+export function getExpById(id, callback) {
+	axios.get('/xssyController.do?syjlck', {
+		dataType: 'json',
+		data: {
+			id: id
+		}
+	}).then(res => {
+		let data = res.data
+		callback(data)
+	}).catch(error => {
+		let data = {
+			status: false
+		}
+		callback(data)
+	})
+}
 export function fetchStuIngExpList(data) {
 	return {
 		type: GET_STUDENT_ING_EXP,
+		data: data
+	}
+}
+
+export function getExpDetail(data) {
+	return {
+		type: GET_EXP_DETAIL_BY_ID,
 		data: data
 	}
 }

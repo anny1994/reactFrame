@@ -13,6 +13,7 @@ import StuIngExp from 'containers/ExpContainer/stuIngExp'
 const routes = (
 	<Switch>
 		<Route exact path="/" component={WelCome}/>
+		<Route path='/start_exp_list' component={Exp}/>
 		{/*学生进行中的实验*/}
     	<Route path='/stujxz_exp' component={Exp}/>
 

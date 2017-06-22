@@ -3,53 +3,134 @@ import Mock from 'mockjs';
 /**
  * 侧边栏菜单
  */
-Mock.mock('/menuController.do?qx', {
-	"data": [{
-		"secondMenu": [{
-			"path": "/stujxz_exp",
-			"title": "进行中的实验"
-		}, {
-			"path": "/stuywc_exp",
-			"title": "已完成的实验"
-		}],
-		"fistMenu": {
-			"title": "实验管理"
+Mock.mock('/menuController.do?qx', function(options) {
+	let params = options.body
+	if (params) {
+		return {
+			"data": [{
+				"secondMenu": [{
+					"path": "/account_xxgly",
+					"title": "账号管理"
+				}],
+				"fistMenu": {
+					"title": "账号管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/start_exp_list",
+					"title": "发起实验"
+				}, {
+					"path": "/dsp_exp",
+					"title": "待审批的实验"
+				}, {
+					"path": "/teaywc_exp",
+					"title": "已完成的实验"
+				}],
+				"fistMenu": {
+					"title": "实验管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/fqmsg_list",
+					"title": "发起消息"
+				}, {
+					"path": "/mymsg_list",
+					"title": "我的消息"
+				}],
+				"fistMenu": {
+					"title": "消息管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/zdcggly",
+					"title": "指定管理员"
+				}, {
+					"path": "/yqsh_list",
+					"title": "仪器采购审核"
+				}, {
+					"path": "/hcsh_list",
+					"title": "耗材采购审核"
+				}, {
+					"path": "/yqgl_list",
+					"title": "仪器采购申请"
+				}, {
+					"path": "/hcgl_list",
+					"title": "耗材采购申请"
+				}],
+				"fistMenu": {
+					"title": "采购管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/account_info",
+					"title": "人员档案"
+				}, {
+					"path": "/exptea_info",
+					"title": "实验档案"
+				}, {
+					"path": "/cg_info",
+					"title": "采购档案"
+				}, {
+					"path": "/other_da",
+					"title": "文献档案"
+				}],
+				"fistMenu": {
+					"title": "档案管理"
+				}
+			}],
+			"status": true
 		}
-	}, {
-		"secondMenu": [{
-			"path": "/mymsg_list",
-			"title": "我的消息"
-		}],
-		"fistMenu": {
-			"title": "消息管理"
+	} else {
+		return {
+			"data": [{
+				"secondMenu": [{
+					"path": "/stujxz_exp",
+					"title": "进行中的实验"
+				}, {
+					"path": "/stuywc_exp",
+					"title": "已完成的实验"
+				}],
+				"fistMenu": {
+					"title": "实验管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/mymsg_list",
+					"title": "我的消息"
+				}],
+				"fistMenu": {
+					"title": "消息管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/yqgl_list",
+					"title": "仪器采购申请"
+				}, {
+					"path": "/hcgl_list",
+					"title": "耗材采购申请"
+				}, {
+					"path": "/lsyqsh_list",
+					"title": "仪器采购审核"
+				}],
+				"fistMenu": {
+					"title": "采购管理"
+				}
+			}, {
+				"secondMenu": [{
+					"path": "/expstu_info",
+					"title": "实验档案"
+				}, {
+					"path": "/other_da",
+					"title": "文献档案"
+				}],
+				"fistMenu": {
+					"title": "档案管理"
+				}
+			}],
+			"status": true
 		}
-	}, {
-		"secondMenu": [{
-			"path": "/yqgl_list",
-			"title": "仪器采购申请"
-		}, {
-			"path": "/hcgl_list",
-			"title": "耗材采购申请"
-		}, {
-			"path": "/lsyqsh_list",
-			"title": "仪器采购审核"
-		}],
-		"fistMenu": {
-			"title": "采购管理"
-		}
-	}, {
-		"secondMenu": [{
-			"path": "/expstu_info",
-			"title": "实验档案"
-		}, {
-			"path": "/other_da",
-			"title": "文献档案"
-		}],
-		"fistMenu": {
-			"title": "档案管理"
-		}
-	}],
-	"status": true
+
+	}
 })
 
 /**

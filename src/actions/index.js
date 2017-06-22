@@ -10,10 +10,13 @@ import axios from 'axios'
 /**
  * 菜单获取
  */
-export function initReq() {
+export function initReq(name) {
 	return function(dispatch, getState) {
 		axios.get('/menuController.do?qx', {
-			dataType: 'json'
+			dataType: 'json',
+			data: {
+				name: name
+			}
 		}).then(res => {
 			let data = res.data.data
 			dispatch(fetchNavList(data))

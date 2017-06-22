@@ -28,7 +28,6 @@ export function getStuIngExp() {
  * @return {[type]} [description]
  */
 export function searchExp(data) {
-	console.log(data)
 	return function(dispatch, getState) {
 		axios.get('/xssyController.do?listjxz', {
 			dataType: 'json',

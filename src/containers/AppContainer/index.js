@@ -56,7 +56,7 @@ export class AppContainer extends React.Component {
 		this.navActionsCreators = bindActionCreators(navActionsCreators, this.props.dispatch)
 	}
 	componentWillMount() {
-		this.navActionsCreators.initReq()
+		this.navActionsCreators.initReq(this.props.userInfo.bh)
 	}
 
 	render() {

@@ -19,7 +19,8 @@ import {
 	Layout,
 	Icon,
 	Menu,
-	Dropdown
+	Dropdown,
+	BackTop
 } from 'antd';
 const {
 	Header,
@@ -48,14 +49,6 @@ const menu = (
     </Menu.Item>
   </Menu>
 )
-const leftSiderStyle = {
-	'position': 'fixed',
-	'bottom': 0,
-	'top': '64px',
-}
-const contentStyle = {
-	'marginLeft': '240',
-}
 class AppContainer extends React.Component {
 
 	constructor(props) {
@@ -70,7 +63,7 @@ class AppContainer extends React.Component {
 		return (
 			<Router>
 			<div className="app-ct">
-				<Layout style={{'height':'100%'}}>
+				<Layout>
 					<Header className="cym-nav-header">
 					<span className="ems-title">实验室信息管理系统</span>
 					<Dropdown overlay={menu}>
@@ -87,13 +80,17 @@ class AppContainer extends React.Component {
 						</div>
 					</Dropdown>
 			        </Header>
+
 			    <Layout >
-			        <Sider  width='240' style={leftSiderStyle} ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
-			        <Content style={contentStyle}>
+			        <Sider className="cym-left-sider" width='240' ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
+			        <Content className="cym-content">
 				        {route}
 			        </Content>
 			      </Layout>
 			    </Layout>
+			    <BackTop>
+			      	<div className="ant-back-top-inner">UP</div>
+			    </BackTop>
 			</div>
 			</Router>
 		)

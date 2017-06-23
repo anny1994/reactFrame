@@ -8,7 +8,9 @@ import {
 import {
   Layout,
   Breadcrumb,
-  Tabs
+  Tabs,
+  Row,
+  Col
 } from 'antd'
 // 富文本编辑器
 import CKEDITOR from 'ckeditor'
@@ -44,7 +46,6 @@ class StuIngExp extends React.Component {
   componentWillUnmount() {
     let editor = CKEDITOR.instances.editor1
     this.saveEditValue(editor)
-    console.log(this.refs.expform)
   }
   saveEditValue = (editor) => {
     let key = 'ems_user_bh_' + this.props.userInfo.bh
@@ -66,6 +67,8 @@ class StuIngExp extends React.Component {
   }
   render() {
     let expInfo = this.props.location.state.expInfo.fqsy ? this.props.location.state.expInfo.fqsy : {}
+    let key = 'ems_user_bh_' + this.props.userInfo.bh
+    let storeText = store.get(key) && store.get(key)
     return (
       <Layout style={{minHeight:'100%'}}>
           <Content style={{ margin: '0 16px' }}>
@@ -81,16 +84,23 @@ class StuIngExp extends React.Component {
                     <Breadcrumb.Item>文档记录：</Breadcrumb.Item>
                   </Breadcrumb>
                   <Tabs defaultActiveKey="1" onChange={this.callback.bind(this)}>
-                    <TabPane tab="Tab 1" key="1">
-                        <div  dangerouslySetInnerHTML={this.setEditValue()} />
+                    <TabPane tab="实验内容与预期结果" key="1">
+                        <Row>
+                            <Col span={1}>
+                                  <div>实验内容</div>
+                            </Col>
+                            <Col span={23}>
+                                  <div dangerouslySetInnerHTML={this.setEditValue()} />
+                            </Col>
+                        </Row>
                     </TabPane>
-                    <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
-                    <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
+                    <TabPane tab="实验准备" key="2">Content of Tab Pane 2</TabPane>
+                    <TabPane tab="实验记录" key="3">Content of Tab Pane 3</TabPane>
                   </Tabs>
                   <Breadcrumb style={{ margin: '20px 0' }}>
                     <Breadcrumb.Item>实验记录：</Breadcrumb.Item>
                   </Breadcrumb>
-                  <textarea name="editor1" id="editor1" rows="10" cols="80" ref="editor"></textarea>
+                  <textarea name="editor1" id="editor1" rows="10" cols="80" ref="editor" value={storeText}></textarea>
               </ExpForm>
             </div>
           </Content>

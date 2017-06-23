@@ -172,7 +172,7 @@ class Exp extends React.Component {
 		expPaConf.onChange = this.onChange.bind(this, paginationConfig.pageSize)
 
 		return (
-			<Layout style={{minHeight:'100%'}}>
+			<Layout >
 	          <Content style={{ margin: '0 16px' }}>
 	            <Breadcrumb style={{ margin: '12px 0' }}>
 	              <Breadcrumb.Item>正在进行的实验</Breadcrumb.Item>

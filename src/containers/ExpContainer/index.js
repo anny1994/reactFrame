@@ -172,14 +172,14 @@ class Exp extends React.Component {
 		expPaConf.onChange = this.onChange.bind(this, paginationConfig.pageSize)
 
 		return (
-			<Layout style={{minHeight:'100%'}}>
+			<Layout >
 	          <Content style={{ margin: '0 16px' }}>
 	            <Breadcrumb style={{ margin: '12px 0' }}>
 	              <Breadcrumb.Item>正在进行的实验</Breadcrumb.Item>
 	            </Breadcrumb>
 	            <div style={{ padding: 24, background: '#fff'}}>
-				      <SearchForm searchfunc={this.expActionsCreators.searchExp.bind(this)}></SearchForm>
-	              <Table columns={this.columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
+			      	<SearchForm searchfunc={this.expActionsCreators.searchExp.bind(this)}></SearchForm>
+              	  	<Table columns={this.columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
 	            </div>
 	          </Content>
 	        </Layout>

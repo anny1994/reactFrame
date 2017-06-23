@@ -19,7 +19,8 @@ import {
 	Layout,
 	Icon,
 	Menu,
-	Dropdown
+	Dropdown,
+	BackTop
 } from 'antd';
 const {
 	Header,
@@ -48,8 +49,7 @@ const menu = (
     </Menu.Item>
   </Menu>
 )
-
-export class AppContainer extends React.Component {
+class AppContainer extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -63,35 +63,40 @@ export class AppContainer extends React.Component {
 		return (
 			<Router>
 			<div className="app-ct">
-				<Layout style={{'height':'100%'}}>
-			      <Header className="cym-nav-header">
-			      	<span className="ems-title">实验室信息管理系统</span>
-			      	<Dropdown overlay={menu}>
-					    <div className="ant-dropdown-link">
-					      <span className="ems-userinfo">
-						    	<span>
-					      			{this.props.userInfo.name}
-					      		</span>
-					      		<span>
-					      			到期时间：{this.props.userInfo.dqsj}
-					      		</span>
-					      		 <Icon className="cym-user-icon" type="user" />
-						    </span>
-					    </div>
+				<Layout>
+					<Header className="cym-nav-header">
+					<span className="ems-title">实验室信息管理系统</span>
+					<Dropdown overlay={menu}>
+						<div className="ant-dropdown-link">
+							<span className="ems-userinfo">
+								<span>
+									{this.props.userInfo.name}
+								</span>
+								<span>
+									到期时间：{this.props.userInfo.dqsj}
+								</span>
+									<Icon className="cym-user-icon" type="user" />
+							</span>
+						</div>
 					</Dropdown>
-			      </Header>
-			      <Layout >
-			        <Sider  width='240' ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
-			        <Content>
-						{route}
+			        </Header>
+
+			    <Layout >
+			        <Sider className="cym-left-sider" width='240' ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
+			        <Content className="cym-content">
+				        {route}
 			        </Content>
 			      </Layout>
 			    </Layout>
+			    <BackTop>
+			      	<div className="ant-back-top-inner">UP</div>
+			    </BackTop>
 			</div>
 			</Router>
 		)
 	}
 }
+
 export default connect(
 	mapStateToProps,
 )(AppContainer)

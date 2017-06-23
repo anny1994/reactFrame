@@ -290,5 +290,8 @@ module.exports = {
   // cumbersome.
   performance: {
     hints: false,
+  },
+  externals: {
+    ckeditor: 'CKEDITOR'
   }
 };

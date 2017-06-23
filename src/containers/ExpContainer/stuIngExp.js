@@ -1,9 +1,5 @@
 import React from 'react';
 import {
-  connect
-} from 'react-redux';
-
-import {
   Layout,
   Breadcrumb
 } from 'antd'
@@ -15,14 +11,6 @@ const {
   Content
 } = Layout;
 
-function mapStateToProps(state) {
-  let {
-    expDetail
-  } = state.expreducer
-  return {
-    expDetail: expDetail
-  }
-}
 
 class StuIngExp extends React.Component {
 
@@ -32,7 +20,6 @@ class StuIngExp extends React.Component {
 
   render() {
     let expInfo = this.props.location.state.expInfo.fqsy ? this.props.location.state.expInfo.fqsy : {}
-    console.log(this.props)
     return (
       <Layout style={{minHeight:'100%'}}>
           <Content style={{ margin: '0 16px' }}>
@@ -48,7 +35,4 @@ class StuIngExp extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  // Implement map dispatch to props
-)(StuIngExp)
+export default StuIngExp

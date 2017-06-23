@@ -48,8 +48,15 @@ const menu = (
     </Menu.Item>
   </Menu>
 )
-
-export class AppContainer extends React.Component {
+const leftSiderStyle = {
+	'position': 'fixed',
+	'bottom': 0,
+	'top': '64px',
+}
+const contentStyle = {
+	'marginLeft': '240',
+}
+class AppContainer extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -64,26 +71,26 @@ export class AppContainer extends React.Component {
 			<Router>
 			<div className="app-ct">
 				<Layout style={{'height':'100%'}}>
-			      <Header className="cym-nav-header">
-			      	<span className="ems-title">实验室信息管理系统</span>
-			      	<Dropdown overlay={menu}>
-					    <div className="ant-dropdown-link">
-					      <span className="ems-userinfo">
-						    	<span>
-					      			{this.props.userInfo.name}
-					      		</span>
-					      		<span>
-					      			到期时间：{this.props.userInfo.dqsj}
-					      		</span>
-					      		 <Icon className="cym-user-icon" type="user" />
-						    </span>
-					    </div>
+					<Header className="cym-nav-header">
+					<span className="ems-title">实验室信息管理系统</span>
+					<Dropdown overlay={menu}>
+						<div className="ant-dropdown-link">
+							<span className="ems-userinfo">
+								<span>
+									{this.props.userInfo.name}
+								</span>
+								<span>
+									到期时间：{this.props.userInfo.dqsj}
+								</span>
+									<Icon className="cym-user-icon" type="user" />
+							</span>
+						</div>
 					</Dropdown>
-			      </Header>
-			      <Layout >
-			        <Sider  width='240' ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
-			        <Content>
-						{route}
+			        </Header>
+			    <Layout >
+			        <Sider  width='240' style={leftSiderStyle} ><ComSider menu={this.props.nav}/><div className="copyright-text"> Ems ©2017 Created by chenym1992</div></Sider>
+			        <Content style={contentStyle}>
+				        {route}
 			        </Content>
 			      </Layout>
 			    </Layout>
@@ -92,6 +99,7 @@ export class AppContainer extends React.Component {
 		)
 	}
 }
+
 export default connect(
 	mapStateToProps,
 )(AppContainer)

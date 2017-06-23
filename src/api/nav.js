@@ -5,7 +5,7 @@ import Mock from 'mockjs';
  */
 Mock.mock('/menuController.do?qx', function(options) {
 	let params = options.body
-	if (params) {
+	if (!params) {
 		return {
 			"data": [{
 				"secondMenu": [{

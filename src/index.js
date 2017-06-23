@@ -15,7 +15,6 @@ import {
 } from 'redux-logger'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
-
 import {
 	initEnv
 } from 'actions'
@@ -29,7 +28,6 @@ if (process.env.NODE_ENV !== 'production') {
 const store = createStore(
 	reducer, applyMiddleware(...middleware)
 )
-
 ReactDOM.render(
 	<Provider store={ store } >
 	<Router>

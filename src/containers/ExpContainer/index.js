@@ -178,8 +178,8 @@ class Exp extends React.Component {
 	              <Breadcrumb.Item>正在进行的实验</Breadcrumb.Item>
 	            </Breadcrumb>
 	            <div style={{ padding: 24, background: '#fff'}}>
-				      <SearchForm searchfunc={this.expActionsCreators.searchExp.bind(this)}></SearchForm>
-	              <Table columns={this.columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
+			      	<SearchForm searchfunc={this.expActionsCreators.searchExp.bind(this)}></SearchForm>
+              	  	<Table columns={this.columns} dataSource={this.props.list} rowKey="id" pagination={paginationConfig}/>
 	            </div>
 	          </Content>
 	        </Layout>

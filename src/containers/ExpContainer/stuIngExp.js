@@ -112,5 +112,7 @@ class StuIngExp extends React.Component {
     )
   }
 }
-
-export default StuIngExp
+export default connect(
+  mapStateToProps,
+  // Implement map dispatch to props
+)(StuIngExp)

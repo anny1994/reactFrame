@@ -30,7 +30,7 @@ class ExpForm extends React.Component {
 			PropTypes.array.isRequired
 		).isRequired,
 		show: PropTypes.bool.isRequired, //展示表单或是表单提交
-		submitCallback: PropTypes.func.isRequired //提交回调函数
+		submitCallback: PropTypes.func //提交回调函数
 	}
 
 	handleSubmit = (e) => {
@@ -105,15 +105,16 @@ class ExpForm extends React.Component {
 		        onSubmit={this.handleSubmit}
 		      >
 		        <Row gutter={40}>{this.getFields()}</Row>
-		        {this.props.children}
-		        <Row>
-		          <Col span={24} style={{ textAlign: 'right' }}>
-		            <Button type="primary" htmlType="submit">提交</Button>
-					<Button style={{ marginLeft: 8 }}  onClick={this.handleReset}>
-		              重置
-		            </Button>
-		          </Col>
-		        </Row>
+		        {this.props.show?'':
+					 <Row>
+			          <Col span={24} style={{ textAlign: 'right' }}>
+			            <Button type="primary" htmlType="submit">提交</Button>
+						<Button style={{ marginLeft: 8 }}  onClick={this.handleReset}>
+			              重置
+			            </Button>
+			          </Col>
+			        </Row>
+			    }
 		    </Form>
 		)
 	}

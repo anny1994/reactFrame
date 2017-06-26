@@ -129,10 +129,10 @@ class Exp extends React.Component {
 			key: 'action',
 			render: (text) => {
 				if (text.xszt === 3) {
-					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id)}>提交实验准备</Button>
+					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id,text.xszt)}>提交实验准备</Button>
 				}
 				if (text.xszt === 2) {
-					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id)}>提交实验记录</Button>
+					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id,text.xszt)}>提交实验记录</Button>
 				}
 
 			},
@@ -145,14 +145,15 @@ class Exp extends React.Component {
 	handleSearch = (data) => {
 		this.expActionsCreators.searchExp(data)
 	}
-	goExpInfo = (params) => {
+	goExpInfo = (params, xszt) => {
 		let {
 			history
 		} = this.props
 		expActionsCreators.getExpById(params, function(calldata) {
 			if (calldata.status) {
 				history.push(`/tjsyzb/${params}`, {
-					expInfo: calldata
+					expInfo: calldata,
+					xszt: xszt
 				})
 			}
 		})

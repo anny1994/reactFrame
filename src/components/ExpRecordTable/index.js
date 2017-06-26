@@ -13,7 +13,7 @@ class ExpRecordTable extends React.Component {
 	render() {
 		console.log(this.props)
 		return (
-			<Table columns={this.props.columns} dataSource={this.props.data} expandedRowRender={record=>this.props.handleRowRender(record)} rowKey="id"/>
+			<Table columns={this.props.columns} dataSource={this.props.data} expandedRowRender={record=>this.props.handleRowRender(record)} rowKey="id" pagination={false}/>
 		);
 	}
 }

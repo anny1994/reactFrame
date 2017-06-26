@@ -366,4 +366,7 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
   },
+  externals: {
+    ckeditor: 'CKEDITOR'
+  }
 };

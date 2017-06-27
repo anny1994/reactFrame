@@ -2,8 +2,11 @@ import {
 	GET_NAV_LIST,
 	SET_USER_INFO
 } from 'constants/ActionTypes'
-import '../api/nav'
+import {
+	API_URL
+} from 'constants/constant'
 import axios from 'axios'
+
 /*
  * action 创建函数
  */
@@ -28,8 +31,13 @@ export function initReq(name) {
  */
 export function initEnv() {
 	return function(dispatch, getState) {
-		axios.get('/userController.do?hqyhxx', {
-			dataType: 'json'
+		axios({
+			method: 'get',
+			url: '/userController.do?hqyhxx',
+			dataType: 'json',
+			// headers: {
+			// 	'zhangjian': 'sb'
+			// }
 		}).then(res => {
 			let data = res.data.data
 			dispatch(fetchUserInfo(data))

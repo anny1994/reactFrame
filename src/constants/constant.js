@@ -1,3 +1,5 @@
+export const API_URL = 'http://192.168.1.103:8080'
+
 /**
  * 默认分页
  * @type {Object}

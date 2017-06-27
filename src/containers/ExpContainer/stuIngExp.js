@@ -54,9 +54,10 @@ class StuIngExp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
+    this.xszt = this.props.location.state.xszt
   }
   componentWillMount() {
-    if (!this.timer) {
+    if (this.xszt !== 4 && !this.timer) {
       this.timer = setInterval(
         () => {
           this.saveEditValue()
@@ -66,21 +67,23 @@ class StuIngExp extends React.Component {
     }
   }
   componentDidMount() {
-    CKEDITOR.replace('editor1', {
-      height: editorHeight
-    })
-    CKEDITOR.replace('editor2', {
-      height: editorHeight
-    })
-
+    if (this.xszt !== 4) {
+      CKEDITOR.replace('editor1', {
+        height: editorHeight
+      })
+      CKEDITOR.replace('editor2', {
+        height: editorHeight
+      })
+    }
   }
   componentWillUnmount() {
-    this.saveEditValue()
+    if (this.xszt !== 4) {
+      this.saveEditValue()
+    }
     this.timer && clearTimeout(this.timer)
   }
 
   saveEditValue = () => {
-    console.log(1)
     let editor1 = CKEDITOR.instances.editor1
     let editor2 = CKEDITOR.instances.editor2
     let key = 'ems_user_bh_' + this.props.userInfo.bh
@@ -251,39 +254,45 @@ class StuIngExp extends React.Component {
                       <ExpRecordTable data={expInfo.syjl} columns={expTableColumns} handleRowRender={this.handleRowRender.bind(this,'syjl')}/>
                     </TabPane>
                   </Tabs>
-                  <Breadcrumb style={{ margin: '20px 0' }}>
-                    <Breadcrumb.Item>实验记录：</Breadcrumb.Item>
-                  </Breadcrumb>
-                  <Row style={rowStyle}>
-                    <FormItem required>
-                        <Col span={2}>
-                              <div>操作方法：</div>
+                  {xszt===4?'':
+                    <div>
+                      <Breadcrumb style={{ margin: '20px 0' }}>
+                        <Breadcrumb.Item>实验记录：</Breadcrumb.Item>
+                      </Breadcrumb>
+                      <Row style={rowStyle}>
+                        <FormItem required>
+                            <Col span={2}>
+                                  <div>操作方法：</div>
+                            </Col>
+                            <Col span={22}>
+                                 <textarea name="czff" id="editor1" rows="10" cols="80" ref="editor1" placeholder="操作方法" value={this.setEditValue('','czff',key)} onChange={this.handleChange.bind(this)}></textarea>
+                            </Col>
+                        </FormItem>
+                      </Row>
+                      <Row style={rowStyle}>
+                        <FormItem required>
+                            <Col span={2}>
+                                  <div>{xszt===2?'预期结果：':'实验结果：'}</div>
+                            </Col>
+                            <Col span={22}>
+                                 <textarea name="syjg" id="editor2" rows="10" cols="80" ref="editor2" placeholder="实验结果" value={this.setEditValue('','syjg',key)} onChange={this.handleChange.bind(this)}></textarea>
+                            </Col>
+                        </FormItem>
+                      </Row>
+                       <Row>
+                        <Col span={24} style={{ textAlign: 'right' }}>
+                          <Button type="primary" onClick={this.handleSubmit.bind(this,expInfo.id)}>提交</Button>
                         </Col>
-                        <Col span={22}>
-                             <textarea name="czff" id="editor1" rows="10" cols="80" ref="editor1" placeholder="操作方法" value={this.setEditValue('','czff',key)} onChange={this.handleChange.bind(this)}></textarea>
-                        </Col>
-                    </FormItem>
-                  </Row>
-                  <Row style={rowStyle}>
-                    <FormItem required>
-                        <Col span={2}>
-                              <div>{xszt===2?'预期结果：':'实验结果：'}</div>
-                        </Col>
-                        <Col span={22}>
-                             <textarea name="syjg" id="editor2" rows="10" cols="80" ref="editor2" placeholder="实验结果" value={this.setEditValue('','syjg',key)} onChange={this.handleChange.bind(this)}></textarea>
-                        </Col>
-                    </FormItem>
-                  </Row>
-                   <Row>
-                    <Col span={24} style={{ textAlign: 'right' }}>
-                      <Button type="primary" onClick={this.handleSubmit.bind(this,expInfo.id)}>提交</Button>
-                    </Col>
-                  </Row>
+                      </Row>
+                    </div>
+                  }
             </div>
           </Content>
-          <Prompt
-            message="你确定要离开吗？"
-          />
+          {xszt===4?'':
+            <Prompt
+              message="你确定要离开吗？"
+            />
+          }
       </Layout>
     )
   }

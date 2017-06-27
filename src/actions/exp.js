@@ -13,9 +13,9 @@ import axios from 'axios'
 /**
  * 获取老师正在进行的实验
  */
-export function getStuIngExp() {
+export function getStuIngExp(url) {
 	return function(dispatch, getState) {
-		axios.get('/xssyController.do?listjxz', {
+		axios.get(url, {
 			dataType: 'json'
 		}).then(res => {
 			let data = res.data.data
@@ -27,9 +27,9 @@ export function getStuIngExp() {
  * 查询实验
  * @return {[type]} [description]
  */
-export function searchExp(data) {
+export function searchExp(data, url) {
 	return function(dispatch, getState) {
-		axios.get('/xssyController.do?listjxz', {
+		axios.get(url, {
 			dataType: 'json',
 			data: data
 		}).then(res => {

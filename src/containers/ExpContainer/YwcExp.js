@@ -92,8 +92,8 @@ class NormalSearchForm extends React.Component {
 }
 
 const SearchForm = Form.create()(NormalSearchForm)
-const listUrl = '/xssyController.do?listjxz'
-class Exp extends React.Component {
+const listUrl = '/xssyController.do?listwc'
+class YwcExp extends React.Component {
 	constructor(props) {
 		super(props)
 		this.expActionsCreators = bindActionCreators(expActionsCreators, this.props.dispatch)
@@ -114,33 +114,16 @@ class Exp extends React.Component {
 			dataIndex: 'lsname',
 			key: 'lsname',
 		}, {
-			title: '状态',
-			dataIndex: 'xszt',
-			key: 'xszt',
-			render: text => {
-				if (text === 3) {
-					return '实验进行中'
-				}
-				if (text === 2) {
-					return '实验准备中'
-				}
-			},
-		}, {
 			title: '操作',
 			key: 'action',
 			render: (text) => {
-				if (text.xszt === 3) {
-					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id,text.xszt)}>提交实验准备</Button>
-				}
-				if (text.xszt === 2) {
-					return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id,text.xszt)}>提交实验记录</Button>
-				}
-
+				return <Button type="primary" onClick={this.goExpInfo.bind(this,text.id,text.xszt)}>查看详情</Button>
 			},
 		}]
 	}
 	componentWillMount() {
 		this.expActionsCreators.getStuIngExp(listUrl)
+
 	}
 	handleSearch = (data) => {
 		this.expActionsCreators.searchExp(data, listUrl)
@@ -192,4 +175,4 @@ class Exp extends React.Component {
 export default connect(
 	mapStateToProps,
 	// Implement map dispatch to props
-)(Exp)
+)(YwcExp)

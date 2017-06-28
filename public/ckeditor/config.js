@@ -52,6 +52,6 @@ CKEDITOR.editorConfig = function(config) {
 			groups: ['about']
 		}
 	];
-
+	config.filebrowserUploadUrl = '/uploader/upload.php';
 	config.removeButtons = 'Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Save,NewPage,Templates,Language,CreateDiv,About';
 };

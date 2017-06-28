@@ -329,3 +329,26 @@ Mock.mock('/xssyController.do?syjlck', function(options) {
 		}
 	}
 })
+
+Mock.mock('/xssyController.do?listwc', function(options) {
+	return {
+		"msg": "查询成功",
+		"data": {
+			"list": [{
+				"name": "ddddddddddd",
+				"id": "402881e85c72ac2e015c72ad80690000",
+				"cjsj": "2017-06-04 18:36:32",
+				"syrq": "2017-06-04 18:36:29",
+				"sybh": "20170604001",
+				"fqr": "2c9330175c3a645a015c4e0df42e0035",
+				"xsid": "2c9330175c3a645a015c4e0eb4810036",
+				"xszt": 4,
+				"lszt": 2,
+				"lsname": "南农",
+				"xsname": "小胖"
+			}],
+			"totalRecords": 1
+		},
+		"status": true
+	}
+})

@@ -367,6 +367,7 @@ module.exports = {
     tls: 'empty',
   },
   externals: {
-    ckeditor: 'CKEDITOR'
+    ckeditor: 'CKEDITOR',
+    io: 'io'
   }
 };

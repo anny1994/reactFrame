@@ -25,6 +25,7 @@ import {
   expTableColumns
 } from 'constants/constant'
 
+
 const {
   Content
 } = Layout
@@ -50,6 +51,7 @@ const colStyle = {
   'overflow': 'auto'
 }
 const editorHeight = '320px'
+
 class StuIngExp extends React.Component {
   constructor(props) {
     super(props)
@@ -80,7 +82,6 @@ class StuIngExp extends React.Component {
   }
 
   saveEditValue = () => {
-    console.log(1)
     let editor1 = CKEDITOR.instances.editor1
     let editor2 = CKEDITOR.instances.editor2
     let key = 'ems_user_bh_' + this.props.userInfo.bh
@@ -210,7 +211,6 @@ class StuIngExp extends React.Component {
       xszt
     } = this.props.location.state
     let key = 'ems_user_bh_' + this.props.userInfo.bh
-    console.log(this.props.location.state)
     return (
       <Layout style={{minHeight:'100%'}}>
           <Content style={{ margin: '0 16px' }}>

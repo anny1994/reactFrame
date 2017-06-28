@@ -292,6 +292,7 @@ module.exports = {
     hints: false,
   },
   externals: {
-    ckeditor: 'CKEDITOR'
+    ckeditor: 'CKEDITOR',
+    io: 'io'
   }
 };

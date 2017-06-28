@@ -13,22 +13,29 @@ import ComSider from 'components/Sider'
 import './index.less'
 import * as navActionsCreators from 'actions'
 import route from '../../routes/route'
-
-
 import {
 	Layout,
 	Icon,
 	Menu,
 	Dropdown,
-	BackTop
+	BackTop,
+	notification
 } from 'antd';
+//socket.io
+import io from 'io'
+
 const {
 	Header,
 	Content,
 	Sider
 } = Layout;
-
-
+const openNotificationWithIcon = (type, msg, desc, duration) => {
+	notification[type]({
+		message: msg,
+		description: desc,
+		duration: duration ? duration : 0,
+	});
+};
 const mapStateToProps = state => {
 	let {
 		nav,
@@ -57,6 +64,31 @@ class AppContainer extends React.Component {
 	}
 	componentWillMount() {
 		this.navActionsCreators.initReq(this.props.userInfo.bh)
+		this.connectSocket()
+
+	}
+
+	connectSocket = () => {
+		const socket = io('http://localhost:3000')
+		socket.on('news', function(data) {
+			const Desc = () => (
+				<div>
+		            <div>
+		              <span>实验发起人：</span>
+		              <span>{data.expInfo.teacher}</span>
+		            </div>
+		            <div>
+		              <span>实验名称：</span>
+		              <span>{data.expInfo.name}</span>
+		            </div>
+		            <div>
+		              <span>实验日期：</span>
+		              <span>{data.expInfo.date}</span>
+		            </div>
+		        </div>
+			)
+			openNotificationWithIcon('info', data.msg, <Desc></Desc>)
+		})
 	}
 
 	render() {
